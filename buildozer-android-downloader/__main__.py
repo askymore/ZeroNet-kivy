@@ -4,6 +4,7 @@ import sys
 from AndroidComponent import SDK, NDK
 from ConfigParser import ConfigParser as config
 import errno
+import time
 
 if len(sys.argv) < 2:
     sys.exit('Usage: %s <buildozer-config>' % sys.argv[0])
