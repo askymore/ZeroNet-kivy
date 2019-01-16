@@ -67,6 +67,17 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
    whoami
+   sudo rm -f /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial universe\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe\n" >>  /etc/apt/sources.list
+   sudo echo -e "deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse\n" >>  /etc/apt/sources.list
    sudo apt-get update
    sudo apt-get install -y make sudo
    echo -e "EXEC=host\n" > /vagrant/.env
