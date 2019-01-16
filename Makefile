@@ -45,6 +45,7 @@ env:
 	sudo dpkg --add-architecture i386
 	sudo apt-get update
 	sudo apt-get install -y python2.7 python-pip software-properties-common
+	sudo pip install --upgrade pip
 	sudo apt-get install -y mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
 	sudo add-apt-repository ppa:kivy-team/kivy -y
 	sudo apt-get update
