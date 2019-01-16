@@ -43,6 +43,7 @@ _deps: # did something, will cleanup later
 
 env:
 	sudo dpkg --add-architecture i386
+	sudo cp ./sources.list /etc/apt/sources.list
 	sudo apt-get update
 	sudo apt-get install -y python2.7 python-pip software-properties-common
 	sudo apt-get install -y mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
