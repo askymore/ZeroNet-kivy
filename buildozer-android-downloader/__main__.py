@@ -29,6 +29,7 @@ conf=config(conf_path)
 objs=dict({"sdk":SDK,"ndk":NDK})
 for thing in ("sdk","ndk"):
     ver=conf.parseNum("android."+thing)
+    time.sleep(2)
     if not ver:
         print "ERROR: Invalid version %s for %s" % (str(ver),thing)
         continue
