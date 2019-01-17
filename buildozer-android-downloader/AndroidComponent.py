@@ -57,31 +57,10 @@ def dlwithprogress(url,dest,what):
     with open(dest, "wb") as f:
         print("Downloading %s from %s" % (what,url))
         r = requests.get(url, stream=True)
-        total_length = int(r.headers.get('content-length'))
-        if "DISABLE_PROGRESS" in os.environ:
-            count_progress=-1
-            count_max=(total_length/1024) + 1
-            count_current=0
-            for chunk in r.iter_content(chunk_size=1024):
-                count_current=count_current+1
-                count_new=count_current//(count_max//100)
-                if count_progress < count_new:
-                    for i in range(count_progress,count_new):
-                        count_progress=count_progress+1
-                        if not count_progress%10:
-                            sys.stdout.write("["+str(count_progress)+"%]")
-                        else:
-                            sys.stdout.write('.')
-                        sys.stdout.flush()
-                f.write(chunk)
-                f.flush()
-            print("")
-        else:
-            for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length/1024) + 1):
-                if chunk:
-                    f.write(chunk)
-                    f.flush()
-
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+               f.write(chunk)
+               f.flush()
 
 class AndroidComponent:
     def __init__(self, version, bpath): #things like the url are defined below
